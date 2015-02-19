@@ -1,45 +1,57 @@
 #encoding: utf-8
 
-module Colors
-  def colorize(text, color_code)
+COLORS = {
+  black:          0,
+  red:            1,
+  green:          2,
+  yellow:         3,
+  blue:           4,
+  magenta:        5,
+  cyan:           6,
+  white:          7,
+  default:        9,
+  light_black:    60,
+  light_red:      61,
+  light_green:    62,
+  light_yellow:   63,
+  light_blue:     64,
+  light_magenta:  65,
+  light_cyan:     66,
+  light_white:    67
+}
+
+module Paintbucket
+  def paint(text, color_code)
     "\033[#{color_code}m#{text}\033[0m"
   end
 
-  { :black    => 30,
-    :red      => 31,
-    :green    => 32,
-    :yellow   => 33,
-    :blue     => 34,
-    :magenta  => 35,
-    :cyan     => 36,
-    :white    => 37
-  }.each do |key, color_code|
-    define_method key do |text|
-      colorize(text, color_code)
+  COLORS.each do |key, color_code|
+    define_method "paint_#{key}" do |text|
+      paint(text, color_code)
     end
   end
 
-  def hint(msg)
+  def paint_hint(msg)
     puts black("   #{msg}")
   end
 
-  def warn(msg)
-    puts yellow("⚑  " + msg)
+  def paint_warn(msg)
+    puts yellow(" ⚑  " + msg)
   end
 
-  def error(msg)
-    puts "\n#{colorize("✗  #{msg}", 31)}"
+  def paint_error(msg)
+    puts "\n#{paint(" ✗  #{msg}", 31)}"
   end
 
-  def success(msg)
-    puts "\n#{colorize("✓  #{msg}", 32)}"
+  def paint_success(msg)
+    puts "\n#{paint(" ✓  #{msg}", 32)}"
   end
 
-  def divider
-    puts "\n#{cyan("=================================")}"
+  def paint_divider(char, times)
+    puts "\n#{cyan(char * times)}"
   end
 
-  def message(msg)
+  def paint_header(msg)
     puts "\n#{cyan(msg)}\n\n"
   end
 end
