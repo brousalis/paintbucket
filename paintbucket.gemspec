@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "paintbucket"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.author      = "Pete Brousalis"
   s.email       = "brousapg@gmail.com"
   s.summary     = "Small library for colorizing output"
