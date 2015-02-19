@@ -32,11 +32,11 @@ module Paintbucket
   end
 
   def paint_hint(msg)
-    puts black("   #{msg}")
+    puts paint_black("   #{msg}")
   end
 
   def paint_warn(msg)
-    puts yellow(" ⚑  " + msg)
+    puts paint_yellow(" ⚑  " + msg)
   end
 
   def paint_error(msg)
@@ -48,10 +48,10 @@ module Paintbucket
   end
 
   def paint_divider(char, times)
-    puts "\n#{cyan(char * times)}"
+    puts "\n#{paint_cyan(char * times)}"
   end
 
   def paint_header(msg)
-    puts "\n#{cyan(msg)}\n\n"
+    puts "\n#{paint_cyan(msg)}\n\n"
   end
 end
