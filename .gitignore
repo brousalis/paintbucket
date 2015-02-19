@@ -1,4 +1,4 @@
 doc
 pkg
 .rake_tasks
-*.gem
+paintbucket-*.gem
