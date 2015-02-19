@@ -1,4 +1,2 @@
-module Paintbucket
-  class Engine < ::Rails::Engine
-  end
-end
+require File.expand_path('paintbucket/paintbucket', File.dirname(__FILE__))
+
